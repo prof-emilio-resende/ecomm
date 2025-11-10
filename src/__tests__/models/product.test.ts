@@ -5,6 +5,7 @@ describe('Product Model', () => {
     // Arrange
     const name = "Produto Teste";
     const price = 100.00;
+    
     // Act
     const product = new Product(name, price);
 
