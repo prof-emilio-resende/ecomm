@@ -1,15 +1,18 @@
 import { Product } from "../models/product";
+import { ProductRepository } from "../repositories/product.repo";
 
 export class CatalogService {
-    private catalog: Array<Product> = [];
+    private repo: ProductRepository;
 
-    constructor() {}
+    constructor(repo: ProductRepository) {
+        this.repo = repo ?? new ProductRepository();
+    }
 
     add(product: Product): void {
-        this.catalog.push(product);
+        this.repo.populate([...this.repo.all(), product]);
     }
 
     list(): Array<Product> {
-        return this.catalog;
+        return this.repo.all();
     }
 }
